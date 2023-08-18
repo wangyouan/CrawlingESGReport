@@ -11,7 +11,6 @@ import os
 import time
 import json
 import calendar
-import datetime
 import requests
 
 from tqdm.notebook import tqdm
@@ -103,7 +102,7 @@ if __name__ == '__main__':
 
     cninfo_df: DataFrame = pd.read_pickle(os.path.join(output_dir, '20230817_social_responsibility_report.pkl'))
 
-    for i in sse_report_df.index:
+    for i in tqdm(sse_report_df.index):
         seccode = sse_report_df.loc[i, 'SecCode']
         ann_date = sse_report_df.loc[i, 'AnnouncementDate']
         tmp_cninfo_df: DataFrame = cninfo_df.loc[(cninfo_df['SecCode'] == seccode) &
